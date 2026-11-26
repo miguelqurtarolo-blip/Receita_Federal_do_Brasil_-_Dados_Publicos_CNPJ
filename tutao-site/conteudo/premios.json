@@ -1,0 +1,4 @@
+{
+  "_leia": "Só entram prêmios documentados (foto do troféu ou certificado). Campos: id, evento, ano, categoria, colocacao, artista (id), foto {arquivo, alt}, peca (id da peça premiada no portfólio, se houver), comprovante (onde está o documento). Lista vazia = seção escondida.",
+  "premios": []
+}

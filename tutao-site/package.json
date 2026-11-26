@@ -1,0 +1,21 @@
+{
+  "name": "site-tutao-tattoo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "imagens": "node scripts/placeholders.mjs",
+    "build": "node build.mjs --modo=publico",
+    "build:previa": "node build.mjs --modo=previa",
+    "serve": "node scripts/serve.mjs",
+    "teste": "node testes/e2e.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/azeret-mono": "5.3.0",
+    "@fontsource-variable/big-shoulders-display": "5.3.0",
+    "@fontsource-variable/hanken-grotesk": "5.3.0"
+  },
+  "devDependencies": {
+    "axe-core": "4.10.3"
+  }
+}

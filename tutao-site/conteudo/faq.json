@@ -1,0 +1,10 @@
+{
+  "_leia": "Perguntas frequentes. Só aparecem no site público as respostas com \"aprovado\": true (aprovadas pela equipe). Os textos abaixo são rascunhos para o estúdio corrigir.",
+  "perguntas": [
+    { "pergunta": "Como peço um orçamento?", "resposta": "Pelo WhatsApp. Conte a ideia, a região do corpo e o tamanho aproximado, e mande referências e fotos na conversa. A equipe responde com o orçamento e as opções de data.", "aprovado": false },
+    { "pergunta": "O horário que escolho no site já fica reservado?", "resposta": "Ainda não. Os dias e períodos do formulário são a sua preferência. A equipe confirma a disponibilidade e o horário pela conversa.", "aprovado": false },
+    { "pergunta": "Posso mandar referências?", "resposta": "Pode e deve. Envie as imagens direto na conversa do WhatsApp. Elas servem de ponto de partida: o desenho final é feito para você.", "aprovado": false },
+    { "pergunta": "Vocês fazem cobertura?", "resposta": "Sim. Mande uma foto nítida da tatuagem atual, com boa luz, e conte o que gostaria no lugar. A equipe avalia o que é possível e explica as opções.", "aprovado": false },
+    { "pergunta": "Posso escolher o artista?", "resposta": "Pode. Se ainda não sabe quem combina com a sua ideia, marque “Quero ajuda para escolher um artista” e a equipe indica.", "aprovado": false }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "_leia": "Um item por artista. Só artistas com \"confirmado\": true aparecem no site. estilos vazio = a confirmar (o perfil não mostra estilos).",
+  "artistas": [
+    {
+      "id": "tutao",
+      "nome": "Tutão",
+      "nomeCompleto": "Cláudio Marcelo Rodrigues",
+      "papel": "Fundador",
+      "resumo": "Fundador do estúdio, com mais de 20 anos de experiência.",
+      "estilos": [],
+      "_estilos": "Confirmar com ele os estilos em que quer ser procurado (ex.: preto e cinza, realismo, coberturas).",
+      "instagram": "https://www.instagram.com/tutao_tattoo/",
+      "retrato": { "arquivo": "artistas/tutao.jpg", "alt": "Retrato de Tutão no estúdio", "provisorio": true },
+      "confirmado": true
+    }
+  ]
+}
