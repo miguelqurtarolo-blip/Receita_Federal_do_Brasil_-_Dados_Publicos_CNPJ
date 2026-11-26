@@ -62,29 +62,28 @@ for (const [disp, opts] of [['desktop', { viewport: { width: 1440, height: 900 }
   t('filtro pela URL', (await p.getAttribute('.chip[data-valor="preto-e-cinza"]', 'aria-pressed')) === 'true');
   // ampliação com mouse
   await p.goto(BASE + '/portfolio/', { waitUntil: 'networkidle' });
-  await p.click('[data-peca="P04"]');
+  await p.click('[data-peca="P05"]');
   t('ampliação abre', await p.locator('dialog.caixa[open]').isVisible());
   t('ampliação mostra artista', (await p.textContent('.caixa__dados')).includes('Tutão'));
-  t('antes/depois aparece em cobertura com antes', await p.locator('.antes-depois').isVisible());
-  await p.click('.antes-depois [data-ver="antes"]');
-  t('antes troca a foto', (await p.getAttribute('.caixa__foto img', 'src')).includes('p04-antes'));
+  // antes/depois só aparece quando a peça tem as duas fotos do mesmo trabalho (hoje nenhuma tem)
+  const temAntes = await p.evaluate(() => JSON.parse(document.getElementById('dados').textContent).pecas.find((x) => x.id === 'P05').antes);
+  t('antes/depois segue o conteúdo', (await p.locator('.antes-depois').isVisible()) === !!temAntes);
   const pedir = await p.getAttribute('[data-c="pedir"]', 'href');
-  t('botão do estilo leva peça e artista', pedir.includes('peca=P04') && pedir.includes('artista=tutao'), pedir);
+  t('botão do estilo leva peça e artista', pedir.includes('peca=P05') && pedir.includes('artista=tutao'), pedir);
   await p.keyboard.press('ArrowRight');
-  t('seta → vai para a próxima', !(await p.textContent('[data-c="id"]')).startsWith('P04'));
-  t('sem antes/depois em peça sem antes', !(await p.locator('.antes-depois').isVisible()));
+  t('seta → vai para a próxima', !(await p.textContent('[data-c="id"]')).startsWith('P05'));
   await p.keyboard.press('Escape');
   t('Esc fecha', !(await p.locator('dialog.caixa[open]').count()));
-  t('foco volta para a peça', await p.evaluate(() => document.activeElement?.dataset?.peca === 'P04'));
+  t('foco volta para a peça', await p.evaluate(() => document.activeElement?.dataset?.peca === 'P05'));
   // teclado do começo: Tab até uma peça e Enter
   await p.goto(BASE + '/portfolio/', { waitUntil: 'networkidle' });
-  await p.focus('[data-peca="P02"]');
+  await p.focus('[data-peca="P06"]');
   await p.keyboard.press('Enter');
   t('Enter abre a ampliação', await p.locator('dialog.caixa[open]').isVisible());
   t('peça sem artista não mostra artista', !(await p.textContent('.caixa__dados')).includes('Artista'));
   // link direto ?peca=
-  await p.goto(BASE + '/portfolio/?peca=P05', { waitUntil: 'networkidle' });
-  t('link direto abre a peça', (await p.textContent('#caixa-titulo')).length > 0 && (await p.textContent('[data-c="id"]')).startsWith('P05'));
+  await p.goto(BASE + '/portfolio/?peca=P03', { waitUntil: 'networkidle' });
+  t('link direto abre a peça', (await p.textContent('#caixa-titulo')).length > 0 && (await p.textContent('[data-c="id"]')).startsWith('P03'));
   await p.close();
 }
 

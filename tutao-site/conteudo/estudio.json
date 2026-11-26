@@ -2,31 +2,111 @@
   "_leia": "Dados do estúdio. Só entra aqui o que foi confirmado. Campo com \"confirmado\": false não aparece na versão pública.",
   "nome": "Estúdio Tutão Tattoo",
   "nomeCurto": "Tutão Tattoo",
-  "fundador": { "nome": "Cláudio Marcelo Rodrigues", "apelido": "Tutão", "experiencia": "mais de 20 anos de experiência" },
-  "endereco": { "rua": "Rua do Rosário, 123", "bairro": "Alto", "cidade": "Piracicaba", "uf": "SP", "cep": "13400-180", "confirmado": true,
-    "_obs": "Endereço de referência passado pelo Miguel. Confirmar com o estúdio que é a sede atual." },
-  "whatsapp": { "numero": "5519987111620", "exibicao": "(19) 98711-1620", "mensagemCurta": "Olá, Estúdio Tutão Tattoo! Vim pelo site e quero conversar sobre uma tattoo." },
-  "telefone": { "numero": "+551933710339", "exibicao": "(19) 3371-0339" },
+  "fundador": {
+    "nome": "Cláudio Marcelo Rodrigues",
+    "apelido": "Tutão",
+    "experiencia": "mais de 20 anos de experiência"
+  },
+  "endereco": {
+    "rua": "Rua do Rosário, 123",
+    "bairro": "Alto",
+    "cidade": "Piracicaba",
+    "uf": "SP",
+    "cep": "13400-180",
+    "confirmado": true,
+    "_obs": "Endereço de referência passado pelo Miguel. Confirmar com o estúdio que é a sede atual."
+  },
+  "whatsapp": {
+    "numero": "5519987111620",
+    "exibicao": "(19) 98711-1620",
+    "mensagemCurta": "Olá, Estúdio Tutão Tattoo! Vim pelo site e quero conversar sobre uma tattoo."
+  },
+  "telefone": {
+    "numero": "+551933710339",
+    "exibicao": "(19) 3371-0339"
+  },
   "redes": [
-    { "rede": "instagram", "rotulo": "Instagram do Tutão", "usuario": "@tutao_tattoo", "url": "https://www.instagram.com/tutao_tattoo/" },
-    { "rede": "instagram", "rotulo": "Instagram do estúdio", "usuario": "@studiotutaotattoo", "url": "https://www.instagram.com/studiotutaotattoo/" },
-    { "rede": "facebook", "rotulo": "Facebook", "usuario": "Estúdio Tutão Tattoo", "url": "https://www.facebook.com/210039882432324/" },
-    { "rede": "linktree", "rotulo": "Linktree", "usuario": "tutao_tattoo", "url": "https://linktr.ee/tutao_tattoo" }
+    {
+      "rede": "instagram",
+      "rotulo": "Instagram do Tutão",
+      "usuario": "@tutao_tattoo",
+      "url": "https://www.instagram.com/tutao_tattoo/"
+    },
+    {
+      "rede": "instagram",
+      "rotulo": "Instagram do estúdio",
+      "usuario": "@studiotutaotattoo",
+      "url": "https://www.instagram.com/studiotutaotattoo/"
+    },
+    {
+      "rede": "facebook",
+      "rotulo": "Facebook",
+      "usuario": "Estúdio Tutão Tattoo",
+      "url": "https://www.facebook.com/210039882432324/"
+    },
+    {
+      "rede": "linktree",
+      "rotulo": "Linktree",
+      "usuario": "tutao_tattoo",
+      "url": "https://linktr.ee/tutao_tattoo"
+    }
   ],
-  "mapa": { "url": null, "confirmado": false,
-    "_obs": "Link da ficha do Google pendente. Enquanto isso, o botão Como chegar usa a rota do Google Maps pelo endereço." },
-  "horarios": { "confirmado": false, "linhas": [
-      { "dias": "Segunda a sexta", "horas": "10h às 18h30" },
-      { "dias": "Sábado", "horas": "9h às 14h" } ],
-    "_obs": "Horários vistos num índice de terceiros (Glartent, a partir do Facebook). Só aparecem depois da confirmação do estúdio." },
-  "servicos": { "confirmado": false, "itens": [
-      { "nome": "Piercing", "texto": "Aplicação de piercing no estúdio." },
-      { "nome": "Mentoria e workshop", "texto": "Workshop individual de preto e cinza, com prática na pele." } ],
-    "_obs": "O Facebook cita piercing e um workshop individual de preto e cinza (27/08/2026). Confirmar se seguem ativos, quem atende e como contratar." },
+  "mapa": {
+    "url": null,
+    "confirmado": false,
+    "_obs": "Link da ficha do Google pendente. Enquanto isso, o botão Como chegar usa a rota do Google Maps pelo endereço."
+  },
+  "horarios": {
+    "confirmado": false,
+    "linhas": [
+      {
+        "dias": "Segunda a sexta",
+        "horas": "10h às 18h30"
+      },
+      {
+        "dias": "Sábado",
+        "horas": "9h às 14h"
+      }
+    ],
+    "_obs": "Horários vistos num índice de terceiros (Glartent, a partir do Facebook). Só aparecem depois da confirmação do estúdio."
+  },
+  "servicos": {
+    "confirmado": false,
+    "itens": [
+      {
+        "nome": "Piercing",
+        "texto": "Aplicação de piercing no estúdio."
+      },
+      {
+        "nome": "Mentoria e workshop",
+        "texto": "Workshop individual de preto e cinza, com prática na pele."
+      }
+    ],
+    "_obs": "O Facebook cita piercing e um workshop individual de preto e cinza (27/08/2026). Confirmar se seguem ativos, quem atende e como contratar."
+  },
   "dominio": null,
   "_dominio": "Preencher com o domínio final (ex.: https://www.tutaotattoo.com.br) antes do build público. Conferir antes o que o botão Site da ficha do Google abre hoje.",
   "cnpj": null,
   "razaoSocial": null,
   "logo": null,
-  "_logo": "Quando chegar o logotipo oficial (SVG de preferência), salvar em public/img/marca/ e ajustar --acento em src/css/site.css para a cor dele."
+  "_logo": "Quando chegar o logotipo oficial (SVG de preferência), salvar em public/img/marca/ e ajustar --acento em src/css/site.css para a cor dele.",
+  "marcos": [
+    {
+      "texto": "Jurado de tatuagem no 13º Piracicaba Tattoo Fest, de 16 a 18 de outubro de 2026, no Engenho Central.",
+      "origem": "Reel de divulgação do @piracicabatattoofest (14/08/2026), repostado pelo @tutao_tattoo",
+      "confirmado": false
+    },
+    {
+      "texto": "Trabalhos que cruzaram continentes: Brasil, Argentina, México e Espanha.",
+      "origem": "Bio do @tutao_tattoo (26/11/2026)",
+      "confirmado": false
+    },
+    {
+      "texto": "Prêmios nacionais e internacionais, segundo a bio do estúdio.",
+      "origem": "Bio do @studiotutaotattoo. Fica fora até haver foto do troféu ou certificado.",
+      "confirmado": false,
+      "soPrevia": true
+    }
+  ],
+  "_marcos": "Marcos da trajetória. Na prévia aparecem com selo 'a confirmar'; no site público só os com confirmado: true. soPrevia: true nunca vai ao público."
 }

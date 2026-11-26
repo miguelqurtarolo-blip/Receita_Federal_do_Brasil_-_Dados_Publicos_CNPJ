@@ -14,11 +14,12 @@ const DIST = join(RAIZ, 'dist');
 const ler = (f) => JSON.parse(readFileSync(join(RAIZ, 'conteudo', f), 'utf8'));
 
 const E = ler('estudio.json');
-const ART = ler('artistas.json').artistas.filter((a) => a.confirmado);
+const ART_TODOS = ler('artistas.json').artistas;
 const PECAS_TODAS = ler('pecas.json').pecas;
 const PREMIOS = ler('premios.json').premios;
 const FAQ = ler('faq.json').perguntas;
 const ESP = ler('espaco.json');
+const MARCOS = (E.marcos || []).filter((m) => PREVIA ? true : (m.confirmado && !m.soPrevia));
 
 // o que aparece em cada modo
 const PECAS = PECAS_TODAS.filter((p) => PREVIA || (p.aprovada && !p.provisoria));
@@ -27,7 +28,9 @@ const HERO_OK = PREVIA || (ESP.hero.aprovada && !ESP.hero.provisoria);
 const FAQ_VIS = FAQ.filter((q) => PREVIA || q.aprovado);
 const HORARIOS = E.horarios.confirmado || PREVIA ? E.horarios : null;
 const SERVICOS = E.servicos.confirmado || PREVIA ? E.servicos : null;
-const retratoOk = (a) => PREVIA || !a.retrato?.provisorio;
+const retratoOk = (a) => !!a.retrato && (PREVIA || !a.retrato.provisorio);
+// na prévia entram também os artistas ainda a confirmar (com selo); no público, só os confirmados
+const ART = ART_TODOS.filter((a) => a.confirmado || PREVIA);
 
 // endereço base: domínio final no público; na prévia, a URL da Vercel (ou a do ambiente)
 const BASE = PREVIA ? (process.env.PREVIA_URL || 'https://tutao-tattoo-previa.vercel.app') : E.dominio;
@@ -126,7 +129,7 @@ ${url === '/' ? jsonLd() : ''}
 </head>
 <body class="${semZap ? '' : 'tem-zap-fixo'}">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-${PREVIA ? '<div class="faixa-previa" role="note">Prévia privada para validação · fotos marcadas como provisórias · não divulgar</div>' : ''}
+${PREVIA ? '<div class="faixa-previa" role="note">Prévia privada para validação · fotos do Instagram aguardando autorização · não divulgar</div>' : ''}
 <header class="nav">
   <div class="dentro nav__dentro">
     <a class="marca" href="/" aria-label="${esc(E.nome)}, página inicial"><span class="marca__nome">Tutão</span><span class="marca__ponto" aria-hidden="true"></span><span class="marca__sub">Tattoo · Piracicaba</span></a>
@@ -182,12 +185,13 @@ function copia(p) {
 
 function artistaCard(a, { grande = false } = {}) {
   const obras = PECAS.filter((p) => p.artista === a.id);
-  const estilos = a.estilos.length ? `<ul class="artista__estilos">${a.estilos.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>`
-    : pend('estilos', `Confirmar com ${esc(a.nome)} os estilos em que quer ser procurado.`);
+  const estilos = (a.estilos.length ? `<ul class="artista__estilos">${a.estilos.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : '')
+    + (!a.estilos.length || a.estilosConfirmados === false ? pend('estilos', a.estilos.length ? esc(a._estilos || `Estilos vistos no Instagram; confirmar com ${a.nome}.`) : `Confirmar com ${esc(a.nome)} os estilos em que quer ser procurado.`) : '')
+    + (!a.confirmado ? pend('equipe', esc(a._confirmar || `Confirmar com o estúdio se ${a.nome} faz parte da equipe e se aceita aparecer no site.`)) : '');
   const retrato = retratoOk(a) ? `<div class="artista__retrato">${seloProv(a.retrato.provisorio)}${img(a.retrato.arquivo, a.retrato.alt, 1000, 1250)}</div>` : '';
   const texto = `<div class="artista__texto">
       <p class="artista__papel">${esc(a.papel)}</p>
-      <h${grande ? 2 : 3} class="artista__nome titulo">${esc(a.nome)}</h${grande ? 2 : 3}>
+      <h${grande ? 2 : 3} class="artista__nome titulo">${esc(a.nome)}${!a.confirmado ? '<span class="rascunho">a confirmar</span>' : ''}</h${grande ? 2 : 3}>
       ${a.nomeCompleto ? `<p>${esc(a.nomeCompleto)}. ${esc(a.resumo)}</p>` : `<p>${esc(a.resumo)}</p>`}
       ${estilos}
       ${grande && obras.length ? `<div><p class="rotulo">Trabalhos atribuídos</p><div class="artista__obras">${obras.slice(0, 6).map((p) => `<a href="/portfolio/?artista=${a.id}&amp;peca=${p.id}" aria-label="Ver ${esc(p.titulo)} (${p.id})">${seloProv(p.provisoria)}${img(p.imagem.arquivo, p.imagem.alt, p.imagem.largura, p.imagem.altura)}</a>`).join('')}</div></div>` : ''}
@@ -259,7 +263,7 @@ ${destaques.length ? `<section class="secao destaques" aria-labelledby="sel-titu
   <div class="dentro">
     <div class="secao__topo"><h2 class="secao__titulo titulo" id="equipe-titulo">A <em>equipe</em></h2><a class="link-seta" href="/artistas/">Conhecer os artistas</a></div>
     <div style="display:grid;gap:clamp(36px,5vw,64px)">${ART.map((a) => artistaCard(a, { grande: true })).join('')}${ajudaArtista}</div>
-    ${PREVIA ? `<div style="margin-top:28px">${pend('artistas', 'Lista dos artistas em atendimento hoje, com retrato, estilos e as peças de cada um. Só o Tutão está confirmado.')}</div>` : ''}
+    ${PREVIA ? `<div style="margin-top:28px">${pend('artistas', 'Lista dos artistas em atendimento hoje, com retrato, estilos e as peças de cada um. Tutão está confirmado; Alexandre Fischer aparece nos perfis do estúdio e ainda precisa ser confirmado.')}</div>` : ''}
   </div>
 </section>
 
@@ -345,7 +349,7 @@ const portfolio = pagina({
   <p class="lead">Peças reais do estúdio. Amplie uma foto para ver o artista e começar uma conversa sobre um projeto parecido.</p>
 </div>
 <section class="dentro" style="padding-bottom:clamp(64px,8vw,120px)" aria-label="Galeria">
-  ${pend('curadoria', 'Começar por preto e cinza, coberturas e cicatrizados. Para cada foto: arquivo original, autoria, texto alternativo e autorização do cliente quando ele puder ser identificado. Antes e depois só quando as duas fotos forem do mesmo trabalho.')}
+  ${pend('curadoria', 'As 9 peças vieram dos perfis do Instagram do estúdio, do Tutão e do Alexandre (origem de cada uma no zoom). Nenhuma vai ao site público sem o ok do estúdio e do cliente. O ideal é trocar pelos arquivos originais e incluir antes e depois de coberturas.')}
   <div class="filtros" style="margin-top:24px">${filtros()}
     <div class="filtros__status"><span id="contagem" aria-live="polite">${PECAS.length} peças</span><button class="filtros__limpar" type="button" hidden>Limpar filtros</button></div>
   </div>
@@ -415,7 +419,8 @@ ${FOTOS_ESPACO.length ? `<section class="dentro" style="padding-bottom:clamp(56p
     <div><p class="rotulo" style="margin-bottom:18px">Trajetória</p><h2 class="frase titulo" id="traj">Tutão. <span class="acento">Mais de 20 anos</span> de tatuagem.</h2></div>
     <div style="display:grid;gap:18px">
       <p class="lead">${esc(E.fundador.nome)}, o Tutão, é o fundador do estúdio e soma ${esc(E.fundador.experiencia)}.</p>
-      ${pend('linha do tempo', 'Ano de abertura do estúdio, marcos da carreira, eventos e convenções. Só entra o que o estúdio confirmar.')}
+      ${MARCOS.length ? `<ul class="marcos">${MARCOS.map((m) => `<li>${esc(m.texto)}${!m.confirmado ? '<span class="rascunho">a confirmar</span>' : ''}</li>`).join('')}</ul>` : ''}
+      ${pend('linha do tempo', 'Ano de abertura do estúdio e outros marcos. Os itens acima vieram do Instagram e só vão ao site público com o ok do estúdio; prêmios só com foto do troféu ou certificado.')}
       <a class="botao botao--escuro" href="/agendamento/?artista=tutao" style="justify-self:start" data-evento="agendar_clique" data-origem="estudio">Solicitar com Tutão</a>
     </div>
   </div>

@@ -380,3 +380,8 @@ fieldset.campo { border: 0; padding: 0; margin: 0; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
   .revela { opacity: 1; transform: none; }
 }
+
+/* marcos da trajetória */
+.marcos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.marcos li { padding-left: 22px; position: relative; line-height: 1.5; }
+.marcos li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 10px; height: 2px; background: var(--acento); }

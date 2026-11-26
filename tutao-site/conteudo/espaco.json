@@ -1,13 +1,55 @@
 {
   "_leia": "Fotos do espaço na Rua do Rosário, 123. Só fotos atuais e aprovadas (\"aprovada\": true) entram no site público. video: preencher quando o estúdio mandar o original (mp4 curto, até ~20 s).",
   "fotos": [
-    { "id": "fachada", "titulo": "Fachada", "arquivo": "espaco/fachada.jpg", "alt": "Fachada do estúdio na Rua do Rosário, 123", "provisoria": true, "aprovada": false },
-    { "id": "recepcao", "titulo": "Recepção", "arquivo": "espaco/recepcao.jpg", "alt": "Recepção do estúdio", "provisoria": true, "aprovada": false },
-    { "id": "sala-1", "titulo": "Sala de atendimento", "arquivo": "espaco/sala-1.jpg", "alt": "Sala de atendimento", "provisoria": true, "aprovada": false },
-    { "id": "sala-2", "titulo": "Sala de atendimento", "arquivo": "espaco/sala-2.jpg", "alt": "Segunda sala de atendimento", "provisoria": true, "aprovada": false },
-    { "id": "equipe", "titulo": "Equipe", "arquivo": "espaco/equipe.jpg", "alt": "Equipe do estúdio", "provisoria": true, "aprovada": false }
+    {
+      "id": "fachada",
+      "titulo": "Fachada",
+      "arquivo": "espaco/fachada.jpg",
+      "alt": "Fachada do estúdio na Rua do Rosário, 123",
+      "provisoria": true,
+      "aprovada": false
+    },
+    {
+      "id": "recepcao",
+      "titulo": "Recepção",
+      "arquivo": "espaco/recepcao.jpg",
+      "alt": "Recepção do estúdio",
+      "provisoria": true,
+      "aprovada": false
+    },
+    {
+      "id": "sala-1",
+      "titulo": "Sala de atendimento",
+      "arquivo": "espaco/sala-1.jpg",
+      "alt": "Sala de atendimento",
+      "provisoria": true,
+      "aprovada": false
+    },
+    {
+      "id": "sala-2",
+      "titulo": "Sala de atendimento",
+      "arquivo": "espaco/sala-2.jpg",
+      "alt": "Segunda sala de atendimento",
+      "provisoria": true,
+      "aprovada": false
+    },
+    {
+      "id": "equipe",
+      "titulo": "Equipe",
+      "arquivo": "espaco/equipe.jpg",
+      "alt": "Equipe do estúdio",
+      "provisoria": true,
+      "aprovada": false
+    }
   ],
   "video": null,
   "_video": "Triagem: vídeo “Conheça um pouco mais a estrutura do estúdio Tutão Tattoo” no Facebook. Confirmar se mostra a sede atual e pedir o arquivo original.",
-  "hero": { "desktop": "hero/hero-desktop.jpg", "mobile": "hero/hero-mobile.jpg", "alt": "Foto de abertura provisória: aguardando foto real de impacto do estúdio", "provisoria": true, "aprovada": false }
+  "hero": {
+    "desktop": "hero/hero-desktop.jpg",
+    "mobile": "hero/hero-mobile.jpg",
+    "alt": "Três trabalhos do estúdio: indígena com cocar em realismo colorido, anjo guerreiro com medalha de São Bento em preto e cinza e fu dog oriental",
+    "provisoria": false,
+    "aprovada": false,
+    "origem": "Montagem de P01, P02 e P08 (Instagram). Precisa da autorização dos clientes ou de uma foto própria do estúdio."
+  }
 }

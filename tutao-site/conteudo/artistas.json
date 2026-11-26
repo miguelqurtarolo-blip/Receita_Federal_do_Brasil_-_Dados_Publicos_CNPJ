@@ -1,17 +1,34 @@
 {
-  "_leia": "Um item por artista. Só artistas com \"confirmado\": true aparecem no site. estilos vazio = a confirmar (o perfil não mostra estilos).",
+  "_leia": "Um item por artista. Na prévia aparecem todos (os não confirmados com selo 'a confirmar'); na versão pública só os com \"confirmado\": true. estilosConfirmados false = estilos tirados do Instagram, ainda sem o ok do artista.",
   "artistas": [
     {
       "id": "tutao",
       "nome": "Tutão",
       "nomeCompleto": "Cláudio Marcelo Rodrigues",
       "papel": "Fundador",
-      "resumo": "Fundador do estúdio, com mais de 20 anos de experiência.",
-      "estilos": [],
-      "_estilos": "Confirmar com ele os estilos em que quer ser procurado (ex.: preto e cinza, realismo, coberturas).",
+      "resumo": "Fundador do estúdio, com mais de 20 anos marcando histórias na pele e trabalhos feitos no Brasil, na Argentina, no México e na Espanha.",
+      "_resumo": "Bio do @tutao_tattoo (26/11/2026): '+20 anos marcando histórias na pele', 'Traços que cruzaram continentes' com bandeiras AR, MX, ES, BR. Confirmar se pode citar os países.",
+      "estilos": ["Realismo", "Retrato", "Sombreado", "Colorido", "Coberturas"],
+      "estilosConfirmados": false,
+      "_estilos": "Estilos tirados dos destaques do @tutao_tattoo (PORTRAIT, FULL COLOR, REALISMO, SOMBREADA, Coberturas). Confirmar com o Tutão antes da versão pública.",
       "instagram": "https://www.instagram.com/tutao_tattoo/",
       "retrato": { "arquivo": "artistas/tutao.jpg", "alt": "Retrato de Tutão no estúdio", "provisorio": true },
       "confirmado": true
+    },
+    {
+      "id": "alexandre",
+      "nome": "Alexandre Fischer",
+      "nomeCompleto": "Alexandre Fischer Rodrigues",
+      "papel": "Tatuador",
+      "resumo": "Especialista em fechamentos sombreados, com trabalhos em preto e cinza de inspiração oriental e grega.",
+      "_resumo": "Bio do @alexandre_fischer1 (26/11/2026): 'Especialista em fechamentos sombreados'. Os reels dele aparecem como collab no @studiotutaotattoo e há uma collab com o @tutao_tattoo (sereia, 24/08/2026). Não afirmar parentesco.",
+      "_confirmar": "Alexandre aparece no perfil do estúdio e em collab com o Tutão. Confirmar que atende no estúdio, o nome que quer usar e um retrato atual.",
+      "estilos": ["Fechamentos", "Sombreado", "Preto e cinza", "Oriental"],
+      "estilosConfirmados": false,
+      "_estilos": "Estilos vistos no @alexandre_fischer1 (destaques Fechamentos e Delicada; fu dog e fechamento grego). Confirmar com ele.",
+      "instagram": "https://www.instagram.com/alexandre_fischer1/",
+      "retrato": null,
+      "confirmado": false
     }
   ]
 }
